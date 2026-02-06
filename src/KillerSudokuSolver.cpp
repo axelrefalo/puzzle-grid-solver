@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <stdbool.h>
 
 using namespace std;
@@ -114,14 +115,26 @@ void PrintGrid(int SudokuKiller[3][9][9], int Option);
 
 int main()
 {
-    cout << "\n...solving the sudoku killer...\n";
+    cout << "\n----------------------------\n";
+    cout << "Solving the Sudoku Killer";
+    cout << "\n----------------------------\n";
+    PrintGrid(SudokuKillerGridEasy1, 0);
+    cout << "\n";
+    PrintGrid(SudokuKillerGridEasy1, 1);
+    cout << "----------------------------";
+
     // The Solver begin with the zero index 
     if (Solver(SudokuKillerGridEasy1, 0)) {
-        cout << "\nthe Sudoku Killer is solved\n\n";
+        cout << "\n----------------------------\n";
+        cout << "Sudoku Killer Solved";
+        cout << "\n----------------------------\n";
         PrintGrid(SudokuKillerGridEasy1, 2);
+        cout << "----------------------------\n";
     }
     else {
-        cout << "\nthe Sudoku Killer is not solvable\n\n";
+        cout << "\n----------------------------\n";
+        cout << "Sudoku Killer not solvable";
+        cout << "\n----------------------------\n";
     }
 }
 
@@ -310,12 +323,10 @@ bool NotOnSquare(int SudokuKiller[3][9][9], int row, int column, int value) {
 // function that print the grid
 // option is the part of the grid want to be seen
 void PrintGrid(int SudokuKiller[3][9][9], int Option) {
-
     for (int l = 0; l < 9; l++) {
         for (int c = 0; c < 9; c++) {
-            cout << " " << SudokuKiller[Option][l][c];
+            cout << setw(3) << SudokuKiller[Option][l][c];
         }
         cout << "\n";
     }
-    cout << "\n\n";
 }

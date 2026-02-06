@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <stdbool.h>
 
 using namespace std;
@@ -66,22 +67,35 @@ void PrintGrid(int SuguruGrid[2][9][9], int Option);
 
 int main()
 {
-    cout << "\n...solving the suguru...\n";
+    cout << "\n----------------------------\n";
+    cout << "Solving the Suguru";
+    cout << "\n----------------------------\n\n";
+
+    PrintGrid(SuguruGridEasy1, 0);
+     cout << "\n";
+    PrintGrid(SuguruGridEasy1, 1);
 
     // The Solver begin with the zero index
-    if (Solver(Solution, SuguruGridEasy1, 0)) {
-        /*
-        int NumberSolution = Solution[99][0][0];
-        cout << "\nthere is " << NumberSolution << " solution \n\n";
+    Solver(Solution, SuguruGridEasy1, 0);
+    
+    int NumberSolution = Solution[99][0][0];
+
+    if (NumberSolution > 0) {
+
+        cout << "\n----------------------------\n";
+        cout << "Solved Suguru";
+        cout << "\n----------------------------\n\n";
+
         for (int i = 0; i < NumberSolution; i++) {
+            cout << "Solution " << (i + 1) << ":\n\n";
             PrintGrid(Solution, i);
         }
-        */
-        PrintGrid(SuguruGridEasy1, 0);
-
+        cout << "----------------------------\n";
     }
     else {
-        cout << "\nthere is no solution\n\n";
+        cout << "\n----------------------------\n";
+        cout << "Suguru not solvable";
+        cout << "\n----------------------------\n";
     }
 }
 
@@ -89,16 +103,13 @@ bool Solver(int Solution[100][9][9], int SuguruGrid[2][9][9], int Box) {
 
     // check if the grid is completed
     if (Box == 81) {
-        /*
         if (SolutionStore(Solution, SuguruGrid)) {
-            return true;
+            return false;
         }
         else {
             CopySolution(Solution, SuguruGrid);
             return false;
         }
-        */
-        return true;
     }
 
     // convert the box number to (line, column) coordinate
@@ -220,14 +231,12 @@ bool InGrid(int line, int column) {
 // function that print the grid
 // option is the part of the grid want to be seen
 void PrintGrid(int SuguruGrid[2][9][9], int Option) {
-
     for (int l = 0; l < 9; l++) {
         for (int c = 0; c < 9; c++) {
-            cout << " " << SuguruGrid[Option][l][c];
+            cout << setw(3) << SuguruGrid[Option][l][c];
         }
         cout << "\n";
     }
-    cout << "\n\n";
 }
 
 // compare two grid if the grid are equal return <1> if not return <0>
@@ -247,8 +256,8 @@ bool SolutionStore(int Solution[100][9][9], int SuguruGrid[2][9][9]) {
         if (Count == 81) {
             return true;
         }
-        return false;
     }
+    return false;
 }
 
 // copy a solution into the solution tab
@@ -263,4 +272,3 @@ void CopySolution(int Solution[100][9][9], int SuguruGrid[2][9][9]) {
     }
     Solution[99][0][0]++;
 }
-

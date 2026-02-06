@@ -1,6 +1,7 @@
 
 
 #include <iostream>
+#include <iomanip>
 #include <stdbool.h>
 
 using namespace std;
@@ -219,15 +220,28 @@ bool NotInLineAndColumn(int KakuroGrid[4][9][9], int line, int column, int digit
 void PrintGrid(int KakuroGrid[4][9][9], int Option);
 
 int main()
-{
+{   
+    cout << "\n----------------------------\n";
+    cout << "Input Kakuro";
+    cout << "\n----------------------------\n";
+    PrintGrid(KakuroGrid14, 0);
+    cout << "\n";
+    PrintGrid(KakuroGrid14, 1);
+    cout << "----------------------------";
+    
 
     // The Solver begin with the zero index 
     if (Solver(KakuroGrid14, 0)) {
-        cout << "\nthe Kakuro is solved\n\n";
+        cout << "\n----------------------------\n";
+        cout << "Solved Kakuro";
+        cout << "\n----------------------------\n";
         PrintGrid(KakuroGrid14, 3);
+        cout << "----------------------------\n";
     }
     else {
-        cout << "\nthe Kakuro is not solvable\n\n";
+        cout << "\n----------------------------\n";
+        cout << "Kakuro not solvable";
+        cout << "\n----------------------------\n";
     }
 }
 
@@ -453,12 +467,10 @@ bool NotInLineAndColumn(int KakuroGrid[4][9][9], int line, int column, int digit
 // function that print the grid
 // option is the part of the grid want to be seen
 void PrintGrid(int KakuroGrid[4][9][9], int Option) {
-
     for (int l = 0; l < 9; l++) {
         for (int c = 0; c < 9; c++) {
-            cout << " " << KakuroGrid[Option][l][c];
+            cout << setw(3) << KakuroGrid[Option][l][c];  // 3 = largeur de colonne
         }
         cout << "\n";
     }
-    cout << "\n\n";
 }

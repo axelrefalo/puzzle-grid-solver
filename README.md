@@ -4,7 +4,7 @@ Set of algorithm (written in c++) that can solve Sudoku, Suguru, Killer Sudoku a
 
 ## Sudoku 
 Solve a sudoku grids using the backtracking method
-file : `SudokuSolver.cpp`
+file : `src/SudokuSolver.cpp`
 
 For solving please replace the following table and run the code
 ```cpp
@@ -24,7 +24,7 @@ For solving please replace the following table and run the code
 
 ## Suguru
 Solve a suguru grids using the backtracking method
-file : `SuguruSolver.cpp`
+file : `src/SuguruSolver.cpp`
 
 For solving please replace the following table and run the code
 * `0` first table is the value already placed in the grid
@@ -56,7 +56,7 @@ For solving please replace the following table and run the code
 
 ## KillerSudoku
 Solve a killer sudoku grids using the backtracking method
-file : `KillerSudokuSolver.cpp`
+file : `src/KillerSudokuSolver.cpp`
 
 For solving please replace the following table and run the code
 * `0` first table is the sum of the digit that need to be satisfy
@@ -99,7 +99,7 @@ int SudokuKillerGridEasy1[3][9][9] = {
 
 ## Kakuro
 Solve a killer sudoku grids using the backtracking method
-file : `KakuroSolver.cpp`
+file : `src/KakuroSolver.cpp`
 
 For solving please replace the following table and run the code
 * `0` first table is the horizontal sum of the digit that need to be satisfy
