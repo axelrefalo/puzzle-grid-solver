@@ -75,7 +75,7 @@
         for (let row = 0; row < N; row++) {
             for (let col = 0; col < N; col++) {
                 const i = row * N + col;
-                const input = el('input', { type: 'number', min: '1', max: String(N) });
+                const input = el('input', { type: 'number', min: '1', max: String(N), class: 'value-input' });
                 input.addEventListener('input', () => {
                     input.classList.remove('given', 'solved-value');
                     const v = parseInt(input.value, 10);

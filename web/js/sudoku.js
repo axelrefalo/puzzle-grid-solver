@@ -40,6 +40,7 @@
                     type: 'number',
                     min: '1',
                     max: String(N),
+                    class: 'value-input',
                 });
                 input.addEventListener('input', () => {
                     input.classList.remove('given', 'solved-value');

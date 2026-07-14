@@ -1,12 +1,10 @@
 # Puzzle-Grid-Solver
 
-Set of algorithm (written in c++) that can solve Sudoku, Suguru, Killer Sudoku and Kakuro puzzles, using the backtracking method
+Set of algorithm (in c++) that can solve Sudoku, Suguru, Killer Sudoku and Kakuro puzzles, using the backtracking method
 
 ## Web interface
 
-The same 4 solvers (compiled to WebAssembly) are available with a visual, browser-based grid editor: **https://axelrefalo.github.io/puzzle-grid-solver/**
-
-Source in [`web/`](web), see [`web/README.md`](web/README.md) for local development.
+**https://axelrefalo.github.io/puzzle-grid-solver/**
 
 ## Sudoku 
 Solve a sudoku grids using the backtracking method

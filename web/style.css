@@ -206,7 +206,13 @@ button.toggle.active {
     border-bottom: 1px solid var(--border);
 }
 
-.cell input[type="number"]:not(.clue-input):not(.cage-sum-badge):not(.fillable-input) {
+/* Opt-in base sizing for a cell's main value input (Sudoku/Suguru/Killer
+   Sudoku digits). Deliberately NOT a catch-all ".cell input" rule with
+   :not() exclusions for the special inputs (clue-input, cage-sum-badge,
+   fillable-input) -- that approach silently escalates specificity every
+   time a new exception is added, to the point it starts beating .given /
+   .solved-value's color override too. */
+.value-input {
     width: 100%;
     height: 100%;
     border: none;
@@ -244,7 +250,7 @@ button.toggle.active {
 
 .cell input.solved-value {
     color: var(--solved);
-    font-weight: 600;
+    font-weight: 300;
 }
 
 /* Kakuro cell states */

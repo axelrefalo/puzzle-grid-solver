@@ -71,7 +71,7 @@
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
                 const i = idx(r, c);
-                const input = el('input', { type: 'number', min: '1', max: '9' });
+                const input = el('input', { type: 'number', min: '1', max: '9', class: 'value-input' });
                 input.addEventListener('input', () => {
                     input.classList.remove('given', 'solved-value');
                     const v = parseInt(input.value, 10);
