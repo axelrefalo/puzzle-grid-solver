@@ -1,0 +1,319 @@
+:root {
+    color-scheme: light dark;
+    --bg: #f5f5f7;
+    --panel-bg: #ffffff;
+    --text: #1b1b1f;
+    --muted: #6b6b76;
+    --border: #cfcfd6;
+    --accent: #3a6df0;
+    --accent-contrast: #ffffff;
+    --given: #111318;
+    --solved: #1c7c3c;
+    --error: #c1372c;
+    --blocked: #2a2a30;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #17181c;
+        --panel-bg: #232429;
+        --text: #ecebf0;
+        --muted: #9b9ba5;
+        --border: #3a3b42;
+        --given: #f3f3f6;
+        --solved: #55d488;
+        --blocked: #0e0e11;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px 16px 60px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0 0 20px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    background: var(--panel-bg);
+    color: var(--text);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.tab-button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+}
+
+.panel {
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    margin: 0 auto;
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.panel[hidden] { display: none; }
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.controls label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.controls input[type="number"].size-input {
+    width: 56px;
+    padding: 4px 6px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.controls button {
+    width: 100%;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--panel-bg);
+    color: var(--text);
+    padding: 7px 14px;
+}
+
+button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+    font-weight: 600;
+}
+
+button.toggle.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+}
+
+.workspace {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.side-panel {
+    width: 190px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mode-toggle {
+    display: flex;
+    gap: 6px;
+}
+
+.mode-toggle button {
+    flex: 1;
+    padding: 7px 8px;
+    font-size: 0.85rem;
+}
+
+.region-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+}
+
+.swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.swatch.active {
+    border-color: var(--text);
+}
+
+.swatch.eraser {
+    background: repeating-linear-gradient(45deg, #ffffff, #ffffff 3px, #d8d8d8 3px, #d8d8d8 6px);
+    border: 1px solid var(--border);
+}
+
+.grid-wrapper {
+    overflow-x: auto;
+}
+
+.grid {
+    display: grid;
+    gap: 0;
+    border: 2px solid var(--text);
+    width: max-content;
+    margin: 0 auto;
+    user-select: none;
+}
+
+.cell {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    background: var(--panel-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.cell input[type="number"]:not(.clue-input):not(.cage-sum-badge):not(.fillable-input) {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    text-align: center;
+    font-size: 1rem;
+    -moz-appearance: textfield;
+}
+
+/* Kept smaller than the cell (not 100%) so a clickable margin of the cell
+   itself remains, letting a click still cycle Blocked/Clue/Fillable instead
+   of always landing on the input. */
+.fillable-input {
+    width: 76%;
+    height: 76%;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    text-align: center;
+    font-size: 1rem;
+    -moz-appearance: textfield;
+}
+
+.cell input[type="number"]::-webkit-outer-spin-button,
+.cell input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.cell input.given {
+    color: var(--given);
+    font-weight: 700;
+}
+
+.cell input.solved-value {
+    color: var(--solved);
+    font-weight: 600;
+}
+
+/* Kakuro cell states */
+.cell.blocked-cell {
+    background: var(--blocked);
+    cursor: pointer;
+}
+
+.cell.clue-cell {
+    /* Split line runs top-left to bottom-right, leaving clean top-right and
+       bottom-left triangles for the two number inputs to sit in. */
+    background: linear-gradient(
+        to bottom left,
+        var(--panel-bg) 49.5%,
+        var(--text) 49.5%,
+        var(--text) 50.5%,
+        var(--bg) 50.5%
+    );
+    cursor: pointer;
+}
+
+.cell.fillable-cell {
+    cursor: pointer;
+}
+
+.clue-input {
+    position: absolute;
+    width: 16px;
+    height: 12px;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.62rem;
+    text-align: center;
+    padding: 0;
+}
+
+.clue-input.right-sum {
+    top: 1px;
+    right: 1px;
+}
+
+.clue-input.down-sum {
+    bottom: 1px;
+    left: 1px;
+}
+
+.cage-sum-badge {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 16px;
+    height: 12px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 0;
+    z-index: 2;
+}
+
+.status-message {
+    min-height: 1.4em;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.status-message.success { color: var(--solved); }
+.status-message.error { color: var(--error); }
+

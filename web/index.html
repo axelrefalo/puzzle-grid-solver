@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Puzzle Grid Solver</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Puzzle Grid Solver</h1>
+
+    <div class="tabs">
+        <button class="tab-button active" data-target="sudoku-panel" type="button">Sudoku</button>
+        <button class="tab-button" data-target="suguru-panel" type="button">Suguru</button>
+        <button class="tab-button" data-target="killer-panel" type="button">Killer Sudoku</button>
+        <button class="tab-button" data-target="kakuro-panel" type="button">Kakuro</button>
+    </div>
+
+    <section id="sudoku-panel" class="panel">
+        <div class="workspace">
+            <aside class="side-panel">
+                <div class="controls">
+                    <label>Box size <input id="sudoku-boxsize" type="number" class="size-input" min="2" max="4" value="3" title="3 = 9×9 grid, 2 = 4×4 grid" /></label>
+                    <button id="sudoku-load-example" type="button">Example</button>
+                    <button id="sudoku-clear" type="button">Clear</button>
+                    <button id="sudoku-solve" type="button" class="primary">Solve</button>
+                </div>
+            </aside>
+            <div class="grid-wrapper">
+                <div id="sudoku-grid" class="grid"></div>
+                <div id="sudoku-status" class="status-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="suguru-panel" class="panel" hidden>
+        <div class="workspace">
+            <aside class="side-panel">
+                <div class="controls">
+                    <label>Rows <input id="suguru-rows" type="number" class="size-input" min="2" max="16" value="9" /></label>
+                    <label>Cols <input id="suguru-cols" type="number" class="size-input" min="2" max="16" value="9" /></label>
+                    <button id="suguru-load-example" type="button">Example</button>
+                    <button id="suguru-clear" type="button">Clear</button>
+                    <button id="suguru-solve" type="button" class="primary">Solve</button>
+                </div>
+                <div class="mode-toggle">
+                    <button id="suguru-mode-paint" type="button" class="toggle">Paint</button>
+                    <button id="suguru-mode-fill" type="button" class="toggle">Numbers</button>
+                </div>
+                <div id="suguru-palette" class="region-palette"></div>
+            </aside>
+            <div class="grid-wrapper">
+                <div id="suguru-grid" class="grid"></div>
+                <div id="suguru-status" class="status-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="killer-panel" class="panel" hidden>
+        <div class="workspace">
+            <aside class="side-panel">
+                <div class="controls">
+                    <label>Box size <input id="killer-boxsize" type="number" class="size-input" min="2" max="4" value="3" /></label>
+                    <button id="killer-load-example" type="button">Example</button>
+                    <button id="killer-clear" type="button">Clear</button>
+                    <button id="killer-solve" type="button" class="primary">Solve</button>
+                </div>
+                <div class="mode-toggle">
+                    <button id="killer-mode-paint" type="button" class="toggle">Paint</button>
+                    <button id="killer-mode-fill" type="button" class="toggle">Givens</button>
+                </div>
+                <div id="killer-palette" class="region-palette"></div>
+            </aside>
+            <div class="grid-wrapper">
+                <div id="killer-grid" class="grid"></div>
+                <div id="killer-status" class="status-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kakuro-panel" class="panel" hidden>
+        <div class="workspace">
+            <aside class="side-panel">
+                <div class="controls">
+                    <label>Rows <input id="kakuro-rows" type="number" class="size-input" min="2" max="16" value="9" /></label>
+                    <label>Cols <input id="kakuro-cols" type="number" class="size-input" min="2" max="16" value="9" /></label>
+                    <button id="kakuro-load-example" type="button">Example</button>
+                    <button id="kakuro-clear" type="button">Clear</button>
+                    <button id="kakuro-solve" type="button" class="primary">Solve</button>
+                </div>
+            </aside>
+            <div class="grid-wrapper">
+                <div id="kakuro-grid" class="grid"></div>
+                <div id="kakuro-status" class="status-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="wasm/puzzle_solvers.js"></script>
+    <script src="js/wasm-bridge.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/sudoku.js"></script>
+    <script src="js/suguru.js"></script>
+    <script src="js/killer-sudoku.js"></script>
+    <script src="js/kakuro.js"></script>
+</body>
+</html>
