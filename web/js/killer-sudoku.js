@@ -68,7 +68,7 @@
         const N = n();
         const grid = $('#killer-grid');
         grid.innerHTML = '';
-        grid.style.gridTemplateColumns = `repeat(${N}, 38px)`;
+        grid.style.gridTemplateColumns = `repeat(${N}, 52px)`;
         cells = [];
         inputs = [];
 
@@ -124,7 +124,6 @@
             if (existingBadge) existingBadge.remove();
         });
 
-        // one editable sum badge per cage, placed on its top-left-most cell
         const anchors = {};
         for (let row = 0; row < N; row++) {
             for (let col = 0; col < N; col++) {

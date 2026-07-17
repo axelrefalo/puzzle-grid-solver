@@ -1,5 +1,3 @@
-// Shared helpers used by every puzzle module + tab switching.
-
 function $(selector, root = document) {
     return root.querySelector(selector);
 }

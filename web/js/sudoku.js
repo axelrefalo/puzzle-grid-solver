@@ -31,7 +31,7 @@
         const N = n();
         const grid = $('#sudoku-grid');
         grid.innerHTML = '';
-        grid.style.gridTemplateColumns = `repeat(${N}, 38px)`;
+        grid.style.gridTemplateColumns = `repeat(${N}, 52px)`;
         inputs = [];
 
         for (let row = 0; row < N; row++) {

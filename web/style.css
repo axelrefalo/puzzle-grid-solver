@@ -85,7 +85,17 @@ h1 {
     gap: 8px;
 }
 
-.controls label {
+.controls button {
+    width: 100%;
+}
+
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings label {
     font-size: 0.85rem;
     color: var(--muted);
     display: flex;
@@ -94,17 +104,13 @@ h1 {
     gap: 6px;
 }
 
-.controls input[type="number"].size-input {
+.settings input[type="number"].size-input {
     width: 56px;
     padding: 4px 6px;
     border: 1px solid var(--border);
     border-radius: 6px;
     background: var(--bg);
     color: var(--text);
-}
-
-.controls button {
-    width: 100%;
 }
 
 button {
@@ -196,8 +202,8 @@ button.toggle.active {
 
 .cell {
     position: relative;
-    width: 38px;
-    height: 38px;
+    width: 52px;
+    height: 52px;
     background: var(--panel-bg);
     display: flex;
     align-items: center;
@@ -219,7 +225,7 @@ button.toggle.active {
     background: transparent;
     color: var(--text);
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     -moz-appearance: textfield;
 }
 
@@ -233,7 +239,7 @@ button.toggle.active {
     background: transparent;
     color: var(--text);
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     -moz-appearance: textfield;
 }
 
@@ -253,7 +259,6 @@ button.toggle.active {
     font-weight: 300;
 }
 
-/* Kakuro cell states */
 .cell.blocked-cell {
     background: var(--blocked);
     cursor: pointer;
@@ -278,12 +283,12 @@ button.toggle.active {
 
 .clue-input {
     position: absolute;
-    width: 16px;
-    height: 12px;
+    width: 20px;
+    height: 15px;
     border: none;
     background: transparent;
     color: var(--text);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     text-align: center;
     padding: 0;
 }
@@ -302,12 +307,12 @@ button.toggle.active {
     position: absolute;
     top: 1px;
     left: 2px;
-    width: 16px;
-    height: 12px;
+    width: 20px;
+    height: 15px;
     border: none;
     background: transparent;
     color: var(--muted);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-weight: 700;
     text-align: left;
     padding: 0;

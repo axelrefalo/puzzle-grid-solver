@@ -1,6 +1,3 @@
-// Thin bridge around the Emscripten-generated puzzle_solvers.js module.
-// Loads the module once and exposes plain-JS-array solve functions.
-
 let modulePromise = null;
 
 function loadModule() {

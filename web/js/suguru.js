@@ -64,7 +64,7 @@
     function buildGrid() {
         const grid = $('#suguru-grid');
         grid.innerHTML = '';
-        grid.style.gridTemplateColumns = `repeat(${cols}, 38px)`;
+        grid.style.gridTemplateColumns = `repeat(${cols}, 52px)`;
         cells = [];
         inputs = [];
 

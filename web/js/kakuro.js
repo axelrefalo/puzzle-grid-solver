@@ -134,7 +134,7 @@
     function buildGrid() {
         const grid = $('#kakuro-grid');
         grid.innerHTML = '';
-        grid.style.gridTemplateColumns = `repeat(${cols}, 38px)`;
+        grid.style.gridTemplateColumns = `repeat(${cols}, 52px)`;
         cells = [];
 
         for (let r = 0; r < rows; r++) {
