@@ -176,7 +176,7 @@
             palette.appendChild(swatch);
         });
 
-        const addBtn = el('button', { type: 'button', title: 'New cage' }, [document.createTextNode('+')]);
+        const addBtn = el('button', { type: 'button', class: 'swatch add', title: 'New cage' }, [document.createTextNode('+')]);
         addBtn.addEventListener('click', () => {
             const nextId = Math.max(0, ...paletteIds) + 1;
             paletteIds.push(nextId);

@@ -144,7 +144,7 @@
             palette.appendChild(swatch);
         });
 
-        const addBtn = el('button', { type: 'button', title: 'New region' }, [document.createTextNode('+')]);
+        const addBtn = el('button', { type: 'button', class: 'swatch add', title: 'New region' }, [document.createTextNode('+')]);
         addBtn.addEventListener('click', () => {
             const nextId = Math.max(0, ...paletteIds) + 1;
             paletteIds.push(nextId);
